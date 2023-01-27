@@ -1,0 +1,28 @@
+<apex:page controller="postalPinCodeController" setup="false" sidebar="false" showHeader="true">
+    <apex:sectionHeader title="webservice" subtitle="Postal Branches"/>
+    <apex:form >
+    	<apex:pageBlock title="Search Postal Branches">
+        	<apex:pageBlockSection title="Search Postal Code" columns="2" collapsible="false">
+            	<apex:inputText label="Enter Postal PinCode Number : " html-placeholder="Enter PinCode Number" value="{!pinCodeNumber}"/>
+                <apex:commandButton value="Search Details" rerender="pgBlock" action="{!searchBranchDetails}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+        <apex:pageBlock title="Number of Records Found : ({!lstPostalBranches.size})" id="pgBlock">
+            
+        	<apex:pageBlockTable value="{!lstPostalBranches}" var="pos">
+                <apex:column value="{!pos.Name}" headerValue="Name"/>
+                <apex:column value="{!pos.BranchType}" headerValue="Branch Type"/>
+                <apex:column value="{!pos.DeliveryStatus}" headerValue="Delivery Status"/>
+                <apex:column value="{!pos.Circle}" headerValue="Circle"/>
+                <apex:column value="{!pos.District}" headerValue="District"/>
+                <apex:column value="{!pos.Division}" headerValue="Division"/>
+                <apex:column value="{!pos.Region}" headerValue="Region"/>
+                <apex:column value="{!pos.Block}" headerValue="Block"/>
+                <apex:column value="{!pos.State}" headerValue="State"/>
+                <apex:column value="{!pos.Country}" headerValue="Country"/>
+                <apex:column value="{!pos.Pincode}" headerValue="Pincode"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
